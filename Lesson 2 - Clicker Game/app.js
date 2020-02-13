@@ -4,7 +4,7 @@ let heading
 function setup(){
     createCanvas(windowWidth,windowHeight)
     background(220)
-    frameRate(10)
+    frameRate(60)
     bananaImg = createImg('banana.png','banana image')
     bananaImg.size(200,100)
     heading = createElement('h2','Catch The Banana!')
