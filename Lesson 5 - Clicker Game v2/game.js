@@ -1,22 +1,66 @@
+// Initialize UI Elements
 let bananaImg
-let heading
+let scoreDisplay
+let livesDisplay
+let difficultySlider
+let title
 
-function setup(){
-    createCanvas(windowWidth,windowHeight)
-    background(220)
-    frameRate(5)
-    bananaImg = createImg('banana.png','banana image')
-    bananaImg.size(200,100)
-    heading = createElement('h2','Catch The Banana!')
-    heading.position(width/2, height/6)
+// Initialize Game Variables
+let lives = 3
+let score = 0
+let winningNum = 5
+let framerate = 3
+
+function setup() {
+  // Setup Canvas
+  createCanvas(windowWidth, windowHeight)
+
+
+  // Setup Lives Display
+  livesDisplay = createElement('h2', 'LIVES: ' + lives)
+  livesDisplay.position(width / 20, height / 14)
+  
+  
+  // Creates Difficulty Slider
+  difficultySlider = createSlider(1, 20, 3)
+  difficultySlider.position(width / 20, height / 5.5)
+  
+  
 }
 
-function draw(){
-    bananaImg.position(random(width), random(height))
-    bananaImg.mousePressed(youWon)
+function draw() {
+  // Adjust frameRate according to slider
+  framerate = difficultySlider.value()
+  console.log(framerate)
+  difficultyLabel = createElement('h2', 'DIFFICULTY: ' + framerate)
+  difficultyLabel.position(width / 20, height / 8 ) 
+  frameRate(framerate)
+
+  // Randomly Position Banana
+  // bananaImg.position(random(width), random(height))
+
+
 }
 
-function youWon(){
-    heading.html('You Won!')
-    bananaImg.remove()
+function mousePressed() {
+  if (dist(mouseX, mouseY, bananaImg.x, bananaImg.y) > 200) {
+    decreaseLives()
+  }
+}
+
+function increaseScore() {
+
+}
+
+function decreaseLives() {
+
+}
+
+function checkWin() {
+
+
+}
+
+function checkLose() {
+
 }
