@@ -96,21 +96,21 @@ function addTopic(topic, intro, detail, uppercase, num) {
     .id('input-field')
     .parent(inputDivUI)
     
-    inputFieldUI.changed(updateOutputHandler)
-    let userInput = inputFieldUI.value().toLowerCase()
     
-
-    if (uppercase === true) {
-      userInput = userInput.toUpperCase()
-    }
-
-    if (num === true) {
-      userInput = Number(userInput)
-      userInput = userInput+30
-    }
-
+    
     let output = createP('').parent(outputDivUI)
-    function updateOutputHandler() { 
-      output.html(intro + userInput + detail)
+      outputFieldUI.changed(updateOutputHandler)
+      let userInput = inputFieldUI.value()
+      
+      function updateOutputHandler() { 
+        output.html(intro + userInput + detail)
+        if (uppercase === true) {
+          userInput = userInput.toUpperCase()
+        }
+  
+        if (num === true) {
+          userInput = Number(userInput)
+          userInput = userInput+30
+      }
     }
 }
